@@ -42,6 +42,7 @@ class OnboardingPage extends StatelessWidget {
                   child: PrimaryButton(
                     text: 'Get Started',
                     onPressed: () {},
+                    sizeH: 48,
                   ),
                 ),
                 Text(
