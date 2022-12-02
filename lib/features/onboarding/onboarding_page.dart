@@ -15,15 +15,15 @@ class OnboardingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.iceWhite,
-      body: Column(
+      body: ListView(
+        physics: NeverScrollableScrollPhysics(),
         children: [
           SizedBox(
-            height: 60,
+            height: 48,
           ),
           Expanded(
-            flex: 2,
             child: Container(
-              child: Image.asset('assets/images/man.png'),
+              child: Image.asset('assets/images/onboarding.png'),
             ),
           ),
           Container(
