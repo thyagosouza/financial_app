@@ -17,4 +17,9 @@ class AppTextStyles {
     fontWeight: FontWeight.w500,
     fontFamily: 'Inter',
   );
+  static const TextStyle buttonText18 = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.w600,
+    fontFamily: 'Inter',
+  );
 }

@@ -2,6 +2,8 @@ import 'package:finance_app/common/constants/app_colors.dart';
 import 'package:finance_app/common/constants/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
+import '../../common/widgets/primary_button.dart';
+
 class OnboardingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -13,8 +15,11 @@ class OnboardingPage extends StatelessWidget {
             height: 60,
           ),
           Expanded(
-              flex: 2,
-              child: Container(child: Image.asset('assets/images/man.png'))),
+            flex: 2,
+            child: Container(
+              child: Image.asset('assets/images/man.png'),
+            ),
+          ),
           Container(
             height: MediaQuery.of(context).size.height * 0.35,
             color: AppColors.white,
@@ -29,9 +34,15 @@ class OnboardingPage extends StatelessWidget {
                         .copyWith(color: AppColors.greenLight2),
                   ),
                 ),
-                ElevatedButton(
-                  onPressed: () {},
-                  child: Text('Get Started'),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 32.0,
+                    vertical: 17,
+                  ),
+                  child: PrimaryButton(
+                    text: 'Get Started',
+                    onPressed: () {},
+                  ),
                 ),
                 Text(
                   'Already have account? Log In',
