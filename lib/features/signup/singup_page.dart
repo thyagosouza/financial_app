@@ -28,7 +28,16 @@ class SingupPage extends StatelessWidget {
           SizedBox(
             height: 10,
           ),
-          TextFormField(),
+          TextFormField(
+            decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    width: 2,
+                    color: AppColors.greenLight2,
+                  ),
+                ),
+                labelText: 'Your Name'),
+          ),
           Padding(
             padding: const EdgeInsets.fromLTRB(32, 17, 32, 4),
             child: PrimaryButtonWidget(
