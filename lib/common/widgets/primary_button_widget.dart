@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import '../constants/app_colors.dart';
 import '../constants/app_text_styles.dart';
 
-class PrimaryButton extends StatelessWidget {
+class PrimaryButtonWidget extends StatelessWidget {
   final VoidCallback? onPressed;
   final String text;
   final double sizeH;
-  PrimaryButton({
+  PrimaryButtonWidget({
     Key? key,
     this.onPressed,
     required this.text,
@@ -27,6 +27,14 @@ class PrimaryButton extends StatelessWidget {
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
         ),
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.black.withOpacity(0.15),
+            spreadRadius: 4,
+            blurRadius: 4,
+            offset: Offset(0, 4), //
+          ),
+        ],
         borderRadius: _borderRadius,
       ),
       child: ElevatedButton(

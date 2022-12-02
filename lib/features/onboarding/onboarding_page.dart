@@ -1,8 +1,14 @@
-import 'package:finance_app/common/constants/app_colors.dart';
-import 'package:finance_app/common/constants/app_text_styles.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:developer';
+
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-import '../../common/widgets/primary_button.dart';
+import 'package:finance_app/common/constants/app_colors.dart';
+import 'package:finance_app/common/constants/app_text_styles.dart';
+
+import '../../common/widgets/primary_button_widget.dart';
+import '../../common/widgets/multi_text_button_widget.dart';
 
 class OnboardingPage extends StatelessWidget {
   @override
@@ -35,20 +41,27 @@ class OnboardingPage extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 32.0,
-                    vertical: 17,
-                  ),
-                  child: PrimaryButton(
+                  padding: EdgeInsets.fromLTRB(32, 17, 32, 4),
+                  child: PrimaryButtonWidget(
                     text: 'Get Started',
                     onPressed: () {},
                     sizeH: 48,
                   ),
                 ),
-                Text(
-                  'Already have account? Log In',
-                  style: AppTextStyles.smallText
-                      .copyWith(color: AppColors.greyDark),
+                MultiTextButtonWidget(
+                  onPressed: () => log('pressed'),
+                  children: [
+                    Text(
+                      'Already have account?  ',
+                      style: AppTextStyles.smallText
+                          .copyWith(color: AppColors.greyDark),
+                    ),
+                    Text(
+                      'Log In',
+                      style: AppTextStyles.smallText
+                          .copyWith(color: AppColors.greenLight1),
+                    ),
+                  ],
                 ),
               ],
             ),
