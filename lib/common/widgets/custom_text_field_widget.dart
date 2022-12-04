@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
 import '../constants/app_colors.dart';
@@ -7,24 +8,26 @@ class CustomTextFormField extends StatefulWidget {
   final EdgeInsetsGeometry? padding;
   final String? hintText;
   final String labelText;
-  final bool isObscure;
+  final bool? isObscure;
   final TextCapitalization? textCapitalization;
   final TextEditingController? controller;
   final TextInputType? textInputType;
   final int? maxLength;
   final TextInputAction? textInputAction;
+  final Widget? sufixIcon;
 
   const CustomTextFormField({
     Key? key,
     this.padding,
     this.hintText,
     required this.labelText,
-    this.isObscure = false,
+    this.isObscure,
     this.textCapitalization,
     this.controller,
     this.textInputType,
     this.maxLength,
     this.textInputAction,
+    this.sufixIcon,
   }) : super(key: key);
 
   @override
@@ -33,10 +36,12 @@ class CustomTextFormField extends StatefulWidget {
 
 class _CustomTextFormFieldState extends State<CustomTextFormField> {
   final defaultBorder = OutlineInputBorder(
+    borderRadius: BorderRadius.circular(10.0),
     borderSide: BorderSide(
       color: AppColors.greenLight2,
     ),
   );
+  bool isObscure = true;
 
   @override
   Widget build(BuildContext context) {
@@ -50,14 +55,23 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         maxLength: widget.maxLength,
         textCapitalization:
             widget.textCapitalization ?? TextCapitalization.none,
-        obscureText: widget.isObscure,
+        obscureText: isObscure,
         decoration: InputDecoration(
           floatingLabelBehavior: FloatingLabelBehavior.always,
           hintText: widget.hintText,
           suffixIcon: widget.isObscure == true
-              ? Icon(
-                  Icons.remove_red_eye_sharp,
-                  size: 20,
+              ? InkWell(
+                  borderRadius: BorderRadius.circular(25),
+                  onTap: () {
+                    setState(() {
+                      isObscure = !isObscure;
+                    });
+                  },
+                  child: Icon(
+                    isObscure ? Icons.visibility : Icons.visibility_off,
+                    size: 20,
+                    color: AppColors.greenLight2,
+                  ),
                 )
               : SizedBox(),
           focusedBorder: defaultBorder.copyWith(),

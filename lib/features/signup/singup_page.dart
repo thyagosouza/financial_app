@@ -15,53 +15,69 @@ class SingupPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: ListView(
-        children: [
-          Container(
-            width: double.infinity,
-            child: Text(
-              'Start Saving \n Your Money!',
-              textAlign: TextAlign.center,
-              style: AppTextStyles.onboarding
-                  .copyWith(color: AppColors.greenLight2),
-            ),
-          ),
-          Image.asset('assets/images/signup.png'),
-          SizedBox(
-            height: 10,
-          ),
-          CustomTextFormField(
-            labelText: 'Name',
-            textCapitalization: TextCapitalization.words,
-            textInputType: TextInputType.name,
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(32, 17, 32, 4),
-            child: PrimaryButtonWidget(
-              text: 'Sign Up',
-              onPressed: () => log('Sign Up'),
-              sizeH: 48,
-            ),
-          ),
-          MultiTextButtonWidget(
-            children: [
-              Text(
-                'Already have account?  ',
-                style: AppTextStyles.smallText.copyWith(
-                  color: AppColors.greyDark,
-                ),
+    return SafeArea(
+      child: Scaffold(
+        body: ListView(
+          children: [
+            Container(
+              width: double.infinity,
+              child: Text(
+                'Start Saving \n Your Money!',
+                textAlign: TextAlign.center,
+                style: AppTextStyles.onboarding
+                    .copyWith(color: AppColors.greenLight2),
               ),
-              Text(
-                'Log In',
-                style: AppTextStyles.smallText.copyWith(
-                  color: AppColors.greenLight1,
-                ),
+            ),
+            Image.asset('assets/images/signup.png'),
+            SizedBox(
+              height: 10,
+            ),
+            CustomTextFormField(
+              labelText: 'Name',
+              textCapitalization: TextCapitalization.words,
+              textInputType: TextInputType.name,
+            ),
+            CustomTextFormField(
+              labelText: 'your email',
+              textInputType: TextInputType.emailAddress,
+            ),
+            CustomTextFormField(
+              labelText: 'choose your password',
+              isObscure: true,
+              textInputType: TextInputType.emailAddress,
+            ),
+            CustomTextFormField(
+              labelText: 'confirm your password',
+              isObscure: true,
+              textInputType: TextInputType.emailAddress,
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(32, 17, 32, 4),
+              child: PrimaryButtonWidget(
+                text: 'Sign Up',
+                onPressed: () => log('Sign Up'),
+                sizeH: 48,
               ),
-            ],
-            onPressed: () {},
-          ),
-        ],
+            ),
+            MultiTextButtonWidget(
+              children: [
+                Text(
+                  'Already Have Account?  ',
+                  style: AppTextStyles.smallText.copyWith(
+                    color: AppColors.greyDark,
+                  ),
+                ),
+                Text(
+                  'Log In',
+                  style: AppTextStyles.smallText.copyWith(
+                    color: AppColors.greenLight1,
+                  ),
+                ),
+              ],
+              onPressed: () {},
+            ),
+          ],
+        ),
       ),
     );
   }
