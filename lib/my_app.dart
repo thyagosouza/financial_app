@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: defaultTheme,
+      //theme: defaultTheme,
       home: Scaffold(
         //body: Container(),
         // body: SplashPage(),

@@ -1,3 +1,4 @@
+import 'package:finance_app/common/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class AppTextStyles {
@@ -13,6 +14,11 @@ class AppTextStyles {
     fontFamily: 'Inter',
   );
   static const TextStyle smallText = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+    fontFamily: 'Inter',
+  );
+  static const TextStyle inputLabelText = TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.w500,
     fontFamily: 'Inter',

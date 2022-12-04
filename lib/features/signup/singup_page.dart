@@ -1,11 +1,14 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:developer';
+
+import 'package:flutter/material.dart';
 
 import 'package:finance_app/common/widgets/multi_text_button_widget.dart';
 import 'package:finance_app/common/widgets/primary_button_widget.dart';
-import 'package:flutter/material.dart';
 
 import '../../common/constants/app_colors.dart';
 import '../../common/constants/app_text_styles.dart';
+import '../../common/widgets/custom_text_field_widget.dart';
 
 class SingupPage extends StatelessWidget {
   const SingupPage({Key? key}) : super(key: key);
@@ -28,15 +31,10 @@ class SingupPage extends StatelessWidget {
           SizedBox(
             height: 10,
           ),
-          TextFormField(
-            decoration: InputDecoration(
-                border: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    width: 2,
-                    color: AppColors.greenLight2,
-                  ),
-                ),
-                labelText: 'Your Name'),
+          CustomTextFormField(
+            labelText: 'Name',
+            textCapitalization: TextCapitalization.words,
+            textInputType: TextInputType.name,
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(32, 17, 32, 4),
