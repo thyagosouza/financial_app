@@ -1,4 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -18,6 +20,7 @@ class CustomTextFormField extends StatefulWidget {
   final Widget? suffixIcon;
   final List<TextInputFormatter>? inputFormatters;
   final FormFieldValidator<String>? validator;
+  final String? helperText;
 
   const CustomTextFormField({
     Key? key,
@@ -33,6 +36,7 @@ class CustomTextFormField extends StatefulWidget {
     this.suffixIcon,
     this.inputFormatters,
     this.validator,
+    this.helperText,
   }) : super(key: key);
 
   @override
@@ -47,12 +51,30 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
     ),
   );
 
+  String? _helperText;
+
+  @override
+  void initState() {
+    super.initState();
+    _helperText = widget.helperText;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: widget.padding ??
           EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
       child: TextFormField(
+        onChanged: (value) {
+          if (value.isNotEmpty) {
+            setState(() {
+              _helperText = null;
+            });
+          } else if (value.isEmpty) {
+            _helperText = widget.helperText;
+          }
+          ;
+        },
         validator: widget.validator,
         textInputAction: widget.textInputAction,
         controller: widget.controller,
@@ -64,6 +86,8 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         inputFormatters: widget.inputFormatters,
         decoration: InputDecoration(
           floatingLabelBehavior: FloatingLabelBehavior.always,
+          helperText: _helperText,
+          helperMaxLines: 3,
           hintText: widget.hintText,
           suffixIcon: widget.suffixIcon,
           focusedBorder: defaultBorder.copyWith(),

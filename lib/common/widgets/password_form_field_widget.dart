@@ -15,6 +15,7 @@ class PasswordFormFieldWidget extends StatefulWidget {
   final int? maxLength;
   final FormFieldValidator<String>? validator;
   final Widget? suffixIcon;
+  final String? helperText;
 
   const PasswordFormFieldWidget({
     Key? key,
@@ -26,6 +27,7 @@ class PasswordFormFieldWidget extends StatefulWidget {
     this.maxLength,
     this.validator,
     this.suffixIcon,
+    this.helperText,
   }) : super(key: key);
 
   @override
@@ -43,7 +45,8 @@ class _PasswordFormFieldWidgetState extends State<PasswordFormFieldWidget> {
       obscureText: isHidden,
       labelText: widget.labelText,
       controller: widget.controller,
-      padding: widget.padding,
+      helperText: widget.helperText,
+      //padding: widget.padding,
       suffixIcon: InkWell(
         borderRadius: BorderRadius.circular(25),
         onTap: () {

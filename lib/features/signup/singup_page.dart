@@ -80,6 +80,8 @@ class _SingupPageState extends State<SingupPage> {
                     },
                     labelText: 'choose your password',
                     obscureText: true,
+                    helperText:
+                        'Must have at 8 characteres, 1 capital letter and 1 number',
                   ),
                   PasswordFormFieldWidget(
                     validator: (value) {
