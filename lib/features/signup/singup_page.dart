@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:developer';
 
+import 'package:finance_app/common/utils/validator.dart';
 import 'package:finance_app/common/widgets/password_form_field_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -21,6 +22,7 @@ class SingupPage extends StatefulWidget {
 
 class _SingupPageState extends State<SingupPage> {
   final _formKey = GlobalKey<FormState>();
+  final _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -46,12 +48,7 @@ class _SingupPageState extends State<SingupPage> {
               child: Column(
                 children: [
                   CustomTextFormField(
-                    validator: (value) {
-                      if (value != null && value.isEmpty) {
-                        return 'esse campo não pode ser vazio';
-                      }
-                      return null;
-                    },
+                    validator: Validator.validateName,
                     obscureText: false,
                     labelText: 'yourName',
                     inputFormatters: [
@@ -61,35 +58,22 @@ class _SingupPageState extends State<SingupPage> {
                     textInputType: TextInputType.name,
                   ),
                   CustomTextFormField(
-                    validator: (value) {
-                      if (value != null && value.isEmpty) {
-                        return 'esse campo não pode ser vazio';
-                      }
-                      return null;
-                    },
+                    validator: Validator.validateEmail,
                     obscureText: false,
                     labelText: 'your email',
                     textInputType: TextInputType.emailAddress,
                   ),
                   PasswordFormFieldWidget(
-                    validator: (value) {
-                      if (value != null && value.isEmpty) {
-                        return 'esse campo não pode ser vazio';
-                      }
-                      return null;
-                    },
+                    controller: _passwordController,
+                    validator: Validator.validatePassword,
                     labelText: 'choose your password',
                     obscureText: true,
                     helperText:
                         'Must have at 8 characteres, 1 capital letter and 1 number',
                   ),
                   PasswordFormFieldWidget(
-                    validator: (value) {
-                      if (value != null && value.isEmpty) {
-                        return 'esse campo não pode ser vazio';
-                      }
-                      return null;
-                    },
+                    validator: (value) => Validator.validateConfirmPassword(
+                        value, _passwordController.text),
                     labelText: 'confirm your password',
                     obscureText: true,
                   ),

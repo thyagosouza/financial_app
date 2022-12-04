@@ -88,6 +88,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           floatingLabelBehavior: FloatingLabelBehavior.always,
           helperText: _helperText,
           helperMaxLines: 3,
+          errorMaxLines: 3,
           hintText: widget.hintText,
           suffixIcon: widget.suffixIcon,
           focusedBorder: defaultBorder.copyWith(),
